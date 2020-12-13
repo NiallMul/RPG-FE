@@ -49,7 +49,7 @@ class Tabs extends Component {
                 <div className="tab-content">
                     {children.map((child) => {
                         if (child.props.label !== activeTab) return undefined;
-                        return child.props.description;
+                        return child;
                     })}
                 </div>
             </div>

@@ -5,7 +5,7 @@ import ClassCard from "./components/ClassCard/ClassCard";
 function App() {
   return (
     <div className="App">
-      <h1>Tab demo</h1>
+      <h1>Pathfinder</h1>
       <ClassCard/>
     </div>
   );

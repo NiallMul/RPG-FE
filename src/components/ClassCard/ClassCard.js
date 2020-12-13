@@ -1,30 +1,53 @@
 import React, {Component} from 'react';
-import Tabs from "../tabs/Tabs";
 import CardDetails from "./CardDetails";
+import Tabs from "../tabs/Tabs";
+
 
 class ClassCard extends Component {
-    generateCardDetails = () => {
-        let formattedCards = [];
-        fetch('http://localhost:8080/race')
-            .then(response => response.json()).then(data => {
-                if (data) {
-                    for (let card of data) {
-                        formattedCards.push(this.createCardComponent(card));
-                    }
-                }
-            }
-        ).catch(error => console.log(error));
+
+    constructor() {
+        super();
+        this.state = {
+            raceInfo: []
+        };
     }
 
-    createCardComponent = (cardInformation) => {
-        return (<CardDetails label={cardInformation.raceName} description={cardInformation.physicalDesc}/>);
+    componentDidMount() {
+        fetch("http://localhost:8080/race")
+            .then(promise => promise.json())
+            .then(data => {
+                this.setState({raceInfo: data})
+            });
+
     }
 
     render() {
+        let raceCards = this.state.raceInfo;
+        const cardList = [];
+        if (raceCards && raceCards.length !== 0) {
+            raceCards.forEach((card, i) => {
+                cardList.push(<CardDetails key={i}
+                                           label={card.raceName}
+                                           physicalDescription={card.physicalDesc}
+                                           society={card.society}
+                                           relations={card.relations}
+                                           alignment={card.alignment}
+                                           religion={card.religion}
+                                           adventurers={card.adventurers}
+                                           maleName={card.maleName}
+                                           femaleName={card.femaleName}/>);
+            })
+        } else {
+            cardList.push(<CardDetails key="1" label="Dwarf" description="they're small"/>)
+            cardList.push(<CardDetails key="2" label="Elf" description="they're tall"/>)
+            cardList.push(<CardDetails key="3" label="Human" description="they're likeable"/>)
+        }
         return (
-            <Tabs>
-                {this.generateCardDetails()}
-            </Tabs>
+            <div>
+                <Tabs>
+                    {cardList}
+                </Tabs>
+            </div>
         );
     }
 }
