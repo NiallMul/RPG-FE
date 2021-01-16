@@ -1,14 +1,13 @@
 import React from 'react';
 import './App.css';
-import ClassCard from "./components/ClassCard/ClassCard";
+import SectionSelector from "./components/game_section_selector/SectionSelector";
 
 function App() {
-  return (
-    <div className="App">
-      <h1>Pathfinder</h1>
-      <ClassCard/>
-    </div>
-  );
+    return (
+        <div className="App">
+            <SectionSelector/>
+        </div>
+    );
 }
 
 export default App;
