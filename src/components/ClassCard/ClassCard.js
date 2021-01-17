@@ -18,30 +18,20 @@ class ClassCard extends Component {
             .then(data => {
                 this.setState({classInfo: data})
             });
-
     }
 
     render() {
-        let raceCards = this.state.classInfo;
+        let classCards = this.state.classInfo;
         const cardList = [];
-        if (raceCards && raceCards.length !== 0) {
-            raceCards.forEach((card, i) => {
+        if (classCards && classCards.length !== 0) {
+            classCards.forEach((card, i) => {
                 cardList.push(<ClassDetails key={i}
-                                           label={card.className}
+                                            label={card.className}
                                             alignment={card.alignment}
                                             hitDie={card.hitDie}
                                             skillsPerLevel={card.skillsPerLevel}
                                             weaponAndArmourProficiency={card.weaponAndArmourProficiency}
-                                           role={card.role}/>);
-                /*
-                alignment: "nonlawful"
-                className: "BARBARIAN"
-                classSkills: null
-                hitDie: 12
-                role: "Barbarians excel in combat, possessing the martial prowess and fortitude to take on foes seemingly far superior to themselves. With rage granting them boldness and daring beyond that of most other warriors, barbarians charge furiously into battle and ruin all who would stand in their way"
-                skillsPerLevel: 4
-                weaponAndArmourProficiency: "A barbarian is proficient with all simple and martial weapons, light armor, medium armor, and shields (except tower shields)."
-                 */
+                                            role={card.role}/>);
             })
         } else {
             cardList.push(<ClassDetails key="1" label="Barbarian" classDesc="they're angry"/>)

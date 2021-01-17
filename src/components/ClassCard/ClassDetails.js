@@ -80,8 +80,6 @@ class ClassDetails extends Component {
                     {this.props.weaponAndArmourProficiency}
                 </td>
             </table>
-
-
         </div>);
     }
 }
