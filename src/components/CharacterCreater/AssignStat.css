@@ -1,0 +1,10 @@
+.diceRolesSelection, .skillSelection{
+    display: flex;
+}
+
+#selectionLabel{
+    color: red;
+}
+#selectionLabelHidden{
+    visibility: hidden;
+}

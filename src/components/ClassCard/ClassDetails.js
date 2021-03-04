@@ -44,42 +44,60 @@ class ClassDetails extends Component {
         }
     }
 
+    showAbilities = () => {
+        window.alert(`abilities belonging to ${this.props.label}`);
+    }
+
     render() {
         return (<div>
             <h2>Class Details</h2>
             <img id="race-image" src={this.selectImage(this.props.label.toLowerCase())} alt={this.props.label}/>
             <table id="race_details">
+                <thead>
                 <tr>
                     <th><h3>Class Alignment:</h3></th>
                     <th><h3>Class Skills:</h3></th>
                     <th><h3>Class hit dice:</h3></th>
                 </tr>
-                <td>
-                    {this.props.alignment}
-                </td>
-                <td>
-                    to be filled
-                </td>
-                <td>
-                    {this.props.hitDie}
-                </td>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        {this.props.alignment}
+                    </td>
+                    <td>
+                        to be filled
+                    </td>
+                    <td>
+                        {this.props.hitDie}
+                    </td>
+
+                </tr>
+                </tbody>
+                <thead>
                 <tr>
                     <th><h3>Class Roles:</h3></th>
                     <th><h3>Class Skills per level:</h3></th>
-                </tr>
-                <td>
-                    {this.props.role}
-                </td>
-                <td>
-                    {this.props.skillsPerLevel} + intelligence modifier
-                </td>
-                <tr>
                     <th><h3>Weapon and armour proficiencies</h3></th>
                 </tr>
-                <td>
-                    {this.props.weaponAndArmourProficiency}
-                </td>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        {this.props.role}
+                    </td>
+                    <td>
+                        {this.props.skillsPerLevel} + intelligence modifier
+                    </td>
+                    <td>
+                        {this.props.weaponAndArmourProficiency}
+                    </td>
+
+                </tr>
+                </tbody>
             </table>
+            <h2>Abilities</h2>
+            <button onClick={this.showAbilities}>Show abilities</button>
         </div>);
     }
 }
